@@ -9,12 +9,14 @@ import { NewGroupViewComponent } from './new-group-view/new-group-view.component
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { GroupsListComponent } from './groups-list/groups-list.component';
+import { IdeasListViewComponent } from './ideas-list-view/ideas-list-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewGroupViewComponent,
-    GroupsListComponent
+    GroupsListComponent,
+    IdeasListViewComponent
   ],
   imports: [
     BrowserModule,

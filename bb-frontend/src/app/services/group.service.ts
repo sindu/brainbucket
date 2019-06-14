@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Group } from '../models/model';
+import { of, Observable } from 'rxjs';
 import { GROUPS_DATA } from "../data/groups-data.ts";
 
 @Injectable({
@@ -9,10 +10,10 @@ export class GroupService {
 
   constructor() { }
 
-  getGroups(): Group[] {
+  getGroups(): Observable<Group[]> {
     const groups = [] as Group[];
     console.log('getGroups called', groups);
-    return GROUPS_DATA;
+    return of(GROUPS_DATA);
   }
 
   createGroup(group: Group) {

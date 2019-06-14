@@ -1,0 +1,5 @@
+<mat-list>
+  <a mat-list-item *ngFor="let idea of ideas$ | async; trackBy:trackById">
+    <h3 mat-line>{{idea.name}}</h3>
+  </a>
+</mat-list>
