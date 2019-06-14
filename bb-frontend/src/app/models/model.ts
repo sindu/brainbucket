@@ -8,6 +8,7 @@ export interface Group {
 
 export interface Idea {
   id: number | string;
+  groupId: number | string;
   name: string;
   description?: string;
   url?: string;
