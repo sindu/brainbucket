@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NewGroupViewComponent } from './new-group-view/new-group-view.component';
+import { CreateGroupViewComponent } from './create-group-view/create-group-view.component';
 import { IdeasListViewComponent } from './ideas-list-view/ideas-list-view.component';
 
 const routes: Routes = [
-  { path: '', component: NewGroupViewComponent },
+  { path: '', component: CreateGroupViewComponent },
   { path: ':id', component: IdeasListViewComponent }
 ];
 

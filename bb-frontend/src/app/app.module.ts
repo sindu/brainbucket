@@ -5,18 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrainBucketMaterialModule } from './brain-bucket-material.module';
-import { NewGroupViewComponent } from './new-group-view/new-group-view.component';
+import { CreateGroupViewComponent } from './create-group-view/create-group-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { GroupsListComponent } from './groups-list/groups-list.component';
 import { IdeasListViewComponent } from './ideas-list-view/ideas-list-view.component';
+import { CreateIdeaContainerComponent } from './create-idea-container/create-idea-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewGroupViewComponent,
+    CreateGroupViewComponent,
     GroupsListComponent,
-    IdeasListViewComponent
+    IdeasListViewComponent,
+    CreateIdeaContainerComponent
   ],
   imports: [
     BrowserModule,
