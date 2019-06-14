@@ -16,19 +16,21 @@ export class GroupService {
   }
 
   addIdeaToGroup(idea: Idea, groupId: string) {
-    this.db.collection<Group>('groups').doc<Group>(groupId).valueChanges()
-      .pipe(map(group => group.ideas.push(idea)));
+    const doc = this.db.collection<Group>('groups').doc<Group>(groupId);
+    const group = this.buildGroup(doc);
+    doc.set({ ...group, ideas: group.ideas.push(idea) });
   }
 
   getGroups(): Observable<Array<Group>> {
     return this.db.collection<Group>('groups').snapshotChanges().pipe(map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data();
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      });
-    })
-    );
+      return actions.map(this.buildGroup);
+    }));
+  }
+
+  private buildGroup = a => {
+    const data = a.payload.doc.data();
+    const id = a.payload.doc.id;
+    return { id, ...data };
   }
 
   createGroup(group: Group) {
