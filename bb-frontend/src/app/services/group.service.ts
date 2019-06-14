@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Group } from '../models/model';
-import { of, Observable } from 'rxjs';
-import { GROUPS_DATA } from '../data/groups-data';
+import {from, Observable} from 'rxjs';
 import { AngularFirestore } from "@angular/fire/firestore";
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,13 @@ export class GroupService {
   constructor(private db: AngularFirestore) { }
 
   getGroups(): Observable<Array<Group>> {
-    return this.db.collection('groups').valueChanges();
+    return this.db.collection<Group>('groups').valueChanges();
   }
 
   createGroup(group: Group) {
-    console.log(group);
+    return from(this.db.collection<Group>('groups').add(group)).pipe(
+      map(res => res.id)
+    );
+
   }
 }

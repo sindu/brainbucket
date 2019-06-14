@@ -18,7 +18,9 @@ export class CreateGroupViewComponent implements OnInit {
   ngOnInit() {
   }
   createGroup(group: Group) {
-    this.groupService.createGroup(group);
-    this.router.navigate([0]);
+    this.groupService.createGroup(group).subscribe(id => {
+      this.router.navigate([id]);
+    });
   }
+
 }

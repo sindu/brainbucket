@@ -20,12 +20,12 @@ export class IdeasListViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ideas$ = this.activatedRoute.params.pipe(switchMap(params => this.ideaService.getIdeasOfGroup(+params.id)));
-    this.groupId$ = this.activatedRoute.params.pipe(map(params => +params.id));
+    this.ideas$ = this.activatedRoute.params.pipe(switchMap(params => this.ideaService.getIdeasOfGroup(params.id)));
+    this.groupId$ = this.activatedRoute.params.pipe(map(params => params.id));
   }
 
   addIdeaToGroup(idea: Idea) {
-    this.activatedRoute.params.subscribe(params => this.ideaService.addIdeaToGroup(idea, +params.id));
+    this.activatedRoute.params.subscribe(params => this.ideaService.addIdeaToGroup(idea, params.id));
   }
 
   trackById(index, idea) {

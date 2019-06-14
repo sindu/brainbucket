@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Idea } from '../models/model';
-import { IDEAS_DATA } from '../data/ideas-data';
+import { Idea} from '../models/model';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IdeasService {
 
-  constructor() { }
+  constructor(private db: AngularFirestore) { }
 
   getIdeasOfGroup(groupId: number): Observable<Idea[]> {
-    return new Observable((observer) => {
-      const data = IDEAS_DATA;
-      observer.next(data.filter(idea => idea.groupId === groupId));
-    });
+    return this.db.collection<Idea>('ideas', ref => ref.where('groupId', '==', groupId)).valueChanges();
   }
 
   addIdeaToGroup(idea: Idea, groupId: number) {
