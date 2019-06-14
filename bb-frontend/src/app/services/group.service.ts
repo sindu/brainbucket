@@ -12,7 +12,7 @@ export class GroupService {
 
   getIdeasOfGroup(groupId: string): Observable<Idea[]> {
     return this.db.collection<Group>('groups').doc<Group>(groupId).valueChanges()
-      .pipe(map(group => group || group.ideas ? group.ideas : []));
+      .pipe(map(group => group && group.ideas ? group.ideas : []));
   }
 
   addIdeaToGroup(idea: Idea, groupId: string) {
