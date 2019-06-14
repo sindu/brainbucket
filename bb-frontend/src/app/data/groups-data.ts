@@ -1,4 +1,6 @@
-export const GROUPS_DATA = [
+import {Group} from "../models/model";
+
+export const GROUPS_DATA: Array<Group> = [
     {
         id: 0,
         name: 'Angular in Flips Flops',

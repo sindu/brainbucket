@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Group } from '../models/model';
 import { of, Observable } from 'rxjs';
-import { GROUPS_DATA } from "../data/groups-data.ts";
+import { GROUPS_DATA } from "../data/groups-data";
 
 @Injectable({
   providedIn: 'root'
