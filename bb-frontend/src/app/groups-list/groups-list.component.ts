@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs";
-import { Group } from "../models/model";
-import { GroupService } from "../services/group.service";
+import { Observable } from 'rxjs';
+import { Group } from '../models/model';
+import { GroupService } from '../services/group.service';
 
 
 @Component({
@@ -17,15 +17,10 @@ export class GroupsListComponent implements OnInit {
   constructor(private groupService: GroupService) { }
 
   ngOnInit() {
-
     this.groups$ = this.groupService.getGroups();
-
   }
-
 
   trackByGroupId(index, group) {
     return group.id;
   }
-
-
 }

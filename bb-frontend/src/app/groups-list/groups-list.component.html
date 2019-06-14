@@ -7,7 +7,7 @@
 </mat-toolbar>
 -->
 <mat-list>
-  <a mat-list-item routerLink="/{{group.id}}" *ngFor="let group of groups$ | async; trackBy: trackByGroupId"
+  <a mat-list-item *ngFor="let group of groups$ | async; trackBy: trackByGroupId" routerLink="/{{group.id}}" 
     title="View {{group.name}} details">
     <h3 mat-line>{{group?.name}}</h3>
   </a>
