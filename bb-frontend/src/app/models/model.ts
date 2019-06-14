@@ -1,5 +1,5 @@
 export interface Group {
-  id: number | string;
+  id: number;
   name: string;
   description?: string;
   dateFrom?: string;
@@ -8,8 +8,8 @@ export interface Group {
 }
 
 export interface Idea {
-  id: number | string;
-  groupId: number | string;
+  id: number;
+  groupId: number;
   name: string;
   description?: string;
   url?: string;

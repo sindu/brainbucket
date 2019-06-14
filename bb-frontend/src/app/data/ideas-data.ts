@@ -1,4 +1,4 @@
-import {Idea} from "../models/model";
+import {Idea} from '../models/model';
 
 export const IDEAS_DATA: Array<Idea> = [
   {

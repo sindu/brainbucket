@@ -4,11 +4,11 @@ import { GroupService } from '../services/group.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-new-group-view',
-  templateUrl: './new-group-view.component.html',
-  styleUrls: ['./new-group-view.component.scss']
+  selector: 'app-create-group-view',
+  templateUrl: './create-group-view.component.html',
+  styleUrls: ['./create-group-view.component.scss']
 })
-export class NewGroupViewComponent implements OnInit {
+export class CreateGroupViewComponent implements OnInit {
   group: Group = {} as Group;
   constructor(
     private groupService: GroupService,
