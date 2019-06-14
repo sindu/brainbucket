@@ -4,6 +4,7 @@ export interface Group {
   description?: string;
   dateFrom?: string;
   dateUntil?: string;
+  lecturers?: Array<string>;
 }
 
 export interface Idea {
