@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Group } from '../models/model';
+import { GroupService } from '../services/group.service';
 
 @Component({
   selector: 'app-new-group-view',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-group-view.component.scss']
 })
 export class NewGroupViewComponent implements OnInit {
-
-  constructor() { }
+  group: Group = {} as Group;
+  constructor(private groupService: GroupService) { }
 
   ngOnInit() {
   }
-
+  createGroup(group: Group) {
+    this.groupService.createGroup(group);
+  }
 }

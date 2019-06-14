@@ -8,8 +8,12 @@ export class GroupService {
 
   constructor() { }
   getGroups(): Group[] {
-    return [];
+    const groups = [] as Group[];
+    console.log('getGroups called', groups);
+    return groups;
   }
 
-  createGroup(group: Group) { }
+  createGroup(group: Group) {
+    console.log(group);
+  }
 }
