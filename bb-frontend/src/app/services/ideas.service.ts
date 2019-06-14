@@ -10,11 +10,4 @@ export class IdeasService {
 
   constructor(private db: AngularFirestore) { }
 
-  getIdeasOfGroup(groupId: number): Observable<Idea[]> {
-    return this.db.collection<Idea>('ideas', ref => ref.where('groupId', '==', groupId)).valueChanges();
-  }
-
-  addIdeaToGroup(idea: Idea, groupId: number) {
-    console.log(idea, groupId);
-  }
 }

@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Idea } from '../models/model';
-import { IdeasService } from '../services/ideas.service';
-import { Observable } from 'rxjs';
-import { group } from '@angular/animations';
+import { GroupService } from '../services/group.service';
 
 @Component({
   selector: 'app-create-idea-container',
@@ -11,10 +9,10 @@ import { group } from '@angular/animations';
 })
 export class CreateIdeaContainerComponent implements OnInit, OnChanges {
 
-  @Input() groupId: number;
+  @Input() groupId: string;
   idea: Idea = this.resetIdea();
   constructor(
-    private ideaService: IdeasService
+    private groupService: GroupService
   ) { }
 
   ngOnInit() {
@@ -25,7 +23,7 @@ export class CreateIdeaContainerComponent implements OnInit, OnChanges {
   }
 
   createIdea(idea: Idea) {
-    this.ideaService.addIdeaToGroup(idea, this.groupId);
+    this.groupService.addIdeaToGroup(idea, this.groupId);
   }
   private resetIdea(): Idea {
     return {} as Idea;

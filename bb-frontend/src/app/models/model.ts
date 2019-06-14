@@ -5,11 +5,11 @@ export interface Group {
   dateFrom?: string;
   dateUntil?: string;
   lecturers?: Array<string>;
+  ideas: Array<Idea>;
 }
 
 export interface Idea {
   id: string;
-  groupId: string;
   name: string;
   description?: string;
   url?: string;
