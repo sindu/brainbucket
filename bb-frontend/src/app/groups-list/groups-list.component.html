@@ -1,0 +1,15 @@
+<!--
+<mat-toolbar>
+  <mat-form-field color="accent" class="trm-search-container">
+    <input matInput type="text" (input)="terms$.next($event.target.value)">
+  </mat-form-field>
+  <mat-icon color="accent">search</mat-icon>
+</mat-toolbar>
+-->
+<mat-list>
+  <a mat-list-item
+     *ngFor="let group of groups$ | async; trackBy: trackByGroupId"
+     title="View {{group.name}} details" >
+    <h3 mat-line>{{group?.name}}</h3>
+  </a>
+</mat-list>
