@@ -13,7 +13,14 @@
           <input matInput placeholder="Group description" name="description" [(ngModel)]="group.description">
         </mat-form-field>
         <mat-form-field fxFlex>
-          <input matInput placeholder="Group date from" name="dateFrom" [(ngModel)]="group.dateFrom">
+          <input matInput [matDatepicker]="pickerFrom" name="dateFrom" placeholder="Group date from" [(ngModel)]="group.dateFrom">
+          <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFrom></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput [matDatepicker]="pickerUntil" name="dateUntil" placeholder="Group Date Until" [(ngModel)]="group.dateUntil">
+          <mat-datepicker-toggle matSuffix [for]="pickerUntil"></mat-datepicker-toggle>
+          <mat-datepicker #pickerUntil></mat-datepicker>
         </mat-form-field>
       </div>
     </mat-card-content>
