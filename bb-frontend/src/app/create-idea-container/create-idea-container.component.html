@@ -1,0 +1,25 @@
+<div class="bb-editor">
+  <mat-card>
+    <mat-card-title-group class="fullBleed editing">
+      <mat-card-title>Create a new idea</mat-card-title>
+      <mat-card-subtitle>you can create a new idea</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      <div fxLayout="column">
+        <mat-form-field fxFlex>
+          <input matInput placeholder="idea name" name="name" [(ngModel)]="idea.name">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput placeholder="idea description" name="description" [(ngModel)]="idea.description">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <input matInput placeholder="idea url" name="url" [(ngModel)]="idea.url">
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions fxLayout fxLayoutAlign="center center">
+      <button mat-button title="create idea" (click)="createIdea(idea)">Create</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
