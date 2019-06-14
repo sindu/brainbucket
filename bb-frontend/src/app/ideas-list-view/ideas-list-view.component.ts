@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { Idea } from '../models/model';
-import { IdeasService } from '../services/ideas.service';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../services/group.service';
 
