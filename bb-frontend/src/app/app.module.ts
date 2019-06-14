@@ -11,6 +11,10 @@ import { FormsModule } from '@angular/forms';
 import { GroupsListComponent } from './groups-list/groups-list.component';
 import { IdeasListViewComponent } from './ideas-list-view/ideas-list-view.component';
 import { CreateIdeaContainerComponent } from './create-idea-container/create-idea-container.component';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {environment} from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { CreateIdeaContainerComponent } from './create-idea-container/create-ide
     HttpClientModule,
     FormsModule,
     BrainBucketMaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
