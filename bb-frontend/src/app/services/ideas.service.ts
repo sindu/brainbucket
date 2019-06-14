@@ -10,10 +10,14 @@ export class IdeasService {
   constructor() { }
 
   getIdeasOfGroup(groupId: number): Observable<Idea[]> {
-    return of([{ name: '123' } as Idea]);
+    console.log(groupId);
+    return of([
+      { name: 'first idea', url: 'https://www.google.com' } as Idea,
+      { name: 'second idea', url: 'https://www.google.com' } as Idea
+    ]);
   }
 
-  addIdeaToService(idea: Idea) {
-    console.log(idea);
+  addIdeaToGroup(idea: Idea, groupId: number) {
+    console.log(idea, groupId);
   }
 }
