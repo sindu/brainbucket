@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Idea } from '../models/model';
+import { IdeasService } from '../services/ideas.service';
 
 @Component({
   selector: 'app-ideas-list-view',
@@ -6,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ideas-list-view.component.scss']
 })
 export class IdeasListViewComponent implements OnInit {
-
-  constructor() { }
+  ideas$: Observable<Idea[]>;
+  constructor(
+    private ideaService: IdeasService
+  ) { }
 
   ngOnInit() {
+    this.ideas$ = this.ideaService.getIdeasOfGroup(0);
   }
 
 }
