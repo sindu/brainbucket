@@ -17,7 +17,10 @@ export class GroupService {
 
   addIdeaToGroup(idea: Idea, groupId: string) {
     const doc = this.db.collection<Group>('groups').doc<Group>(groupId);
-    doc.valueChanges().pipe(first()).subscribe(data => doc.update({ ...data, ideas: [...data.ideas, idea] }));
+    doc.valueChanges().pipe(first()).subscribe(data => {
+      const ideas = data && data.ideas ? data.ideas : [];
+      doc.update({ ...data, ideas: [...ideas, idea] });
+    });
   }
 
   getGroups(): Observable<Array<Group>> {
