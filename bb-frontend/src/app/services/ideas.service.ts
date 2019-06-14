@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Idea } from '../models/model';
+import { IDEAS_DATA } from '../data/ideas-data';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,10 @@ export class IdeasService {
   constructor() { }
 
   getIdeasOfGroup(groupId: number): Observable<Idea[]> {
-    console.log(groupId);
-    return of([
-      { name: 'first idea', url: 'https://www.google.com' } as Idea,
-      { name: 'second idea', url: 'https://www.google.com' } as Idea
-    ]);
+    return new Observable((observer) => {
+      const data = IDEAS_DATA;
+      observer.next(data.filter(idea => idea.groupId === groupId));
+    });
   }
 
   addIdeaToGroup(idea: Idea, groupId: number) {
