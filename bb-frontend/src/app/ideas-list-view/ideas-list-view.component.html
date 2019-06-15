@@ -1,6 +1,6 @@
 <mat-drawer-container autosize>
   <mat-drawer mode="side" opened="true">
-    <app-create-idea-container [groupId]="groupId$ | async"></app-create-idea-container>
+    <app-create-idea-container [group]="group$ | async"></app-create-idea-container>
   </mat-drawer>
   <div class="main-content">
     <mat-list>

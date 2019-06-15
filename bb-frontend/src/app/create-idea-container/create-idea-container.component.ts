@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Idea } from '../models/model';
+import { Idea, Group } from '../models/model';
 import { GroupService } from '../services/group.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { GroupService } from '../services/group.service';
 })
 export class CreateIdeaContainerComponent implements OnInit, OnChanges {
 
-  @Input() groupId: string;
+  @Input() group: Group;
   idea: Idea = this.resetIdea();
   constructor(
     private groupService: GroupService
@@ -23,9 +23,10 @@ export class CreateIdeaContainerComponent implements OnInit, OnChanges {
   }
 
   createIdea(idea: Idea) {
-    this.groupService.addIdeaToGroup(idea, this.groupId);
+    this.groupService.addIdeaToGroup(idea, this.group.id);
     this.idea = this.resetIdea();
   }
+
   private resetIdea(): Idea {
     return {} as Idea;
   }

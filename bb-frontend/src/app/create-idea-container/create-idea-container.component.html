@@ -20,6 +20,9 @@
     </mat-card-content>
     <mat-card-actions fxLayout fxLayoutAlign="center center">
       <button mat-button title="create idea" (click)="createIdea(idea)">Create</button>
+      <mat-slide-toggle [checked]="group?.locked">
+        Finished creating ideas for the group{{group?.locked ? '!' : '?' }}
+      </mat-slide-toggle>
     </mat-card-actions>
   </mat-card>
 
