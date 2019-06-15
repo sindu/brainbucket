@@ -27,7 +27,7 @@ import { VoteViewComponent } from './vote-view/vote-view.component';
     IdeasListViewComponent,
     CreateIdeaContainerComponent,
     GroupDetailComponent,
-    VoteViewComponent
+    VoteViewComponent,
     GroupDetailComponent,
     LoginDialogComponent
   ],

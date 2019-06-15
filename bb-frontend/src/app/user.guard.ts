@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { UserService } from './services/user.service';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,7 @@ export class UserGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
 
-    const user = this.userService.checkUser();
-
-    if (!user) {
-      console.log('Guard: no user found');
-    } else {
-      console.log(user);
-    }
-    return of(true);
+    return this.userService.checkUser().pipe(map(username => true));
 
   }
 

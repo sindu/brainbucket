@@ -1,7 +1,13 @@
 <mat-toolbar color="primary">
-  <div fxLayout fxLayoutAlign="space-between center" fxFlex routerLink="/">
-    Brain Bucket
+  <div fxLayout="row" fxLayoutAlign="space-between center" routerLink="/">
+    <div>
+      Brain Bucket
+    </div>
+    <div fxLayout fxLayoutAlign="flex-end">
+      {{user$ | async}} UserName
+    </div>
   </div>
+
 </mat-toolbar>
 
 <mat-drawer-container autosize>
