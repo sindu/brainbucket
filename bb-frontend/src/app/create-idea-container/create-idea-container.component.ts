@@ -27,6 +27,8 @@ export class CreateIdeaContainerComponent implements OnInit, OnChanges {
     this.idea = this.resetIdea();
   }
 
+
+
   private resetIdea(): Idea {
     return {} as Idea;
   }

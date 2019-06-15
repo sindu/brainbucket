@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Group} from '../models/model';
+import {GroupService} from '../services/group.service';
 
 @Component({
   selector: 'app-group-detail',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupDetailComponent implements OnInit {
 
-  constructor() { }
+
+  @Input() group: Group;
+
+  constructor(private groupService: GroupService) { }
 
   ngOnInit() {
   }
