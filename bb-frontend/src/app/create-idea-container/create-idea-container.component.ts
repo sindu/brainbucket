@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Idea, Group } from '../models/model';
 import { GroupService } from '../services/group.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-idea-container',
@@ -12,7 +13,9 @@ export class CreateIdeaContainerComponent implements OnInit, OnChanges {
   @Input() group: Group;
   idea: Idea = this.resetIdea();
   constructor(
-    private groupService: GroupService
+    private groupService: GroupService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -28,8 +31,8 @@ export class CreateIdeaContainerComponent implements OnInit, OnChanges {
   }
 
   lockGroup() {
-    console.log(this.group.id);
     this.groupService.lockGroup(this.group.id);
+    this.router.navigate(['vote'], { relativeTo: this.route });
   }
 
   private resetIdea(): Idea {
