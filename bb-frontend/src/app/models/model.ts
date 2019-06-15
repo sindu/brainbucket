@@ -14,6 +14,7 @@ export interface Idea {
   name: string;
   description?: string;
   url?: string;
+  users: string[];
 }
 
 export interface LoginData {
