@@ -17,6 +17,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { VoteViewComponent } from './vote-view/vote-view.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
     GroupsListComponent,
     IdeasListViewComponent,
     CreateIdeaContainerComponent,
+    GroupDetailComponent,
+    VoteViewComponent
     GroupDetailComponent,
     LoginDialogComponent
   ],
