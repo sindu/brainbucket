@@ -1,3 +1,6 @@
-<p>
-  vote-view works!
-</p>
+<mat-selection-list (selectionChange)="change($event)">
+  <mat-list-option [value]="idea.name" *ngFor="let idea of ideas$ | async; trackBy:trackById">
+    <h3 mat-line>{{idea.name}}</h3>
+    <h3 mat-line>{{idea.description}}</h3>
+  </mat-list-option>
+</mat-selection-list>

@@ -15,11 +15,6 @@ export class GroupService {
     return this.db.collection<Group>(this.groupCollectionIdentifier);
   }
 
-  // getIdeasOfGroup(groupId: string): Observable<Idea[]> {
-  //   return this.getGroupCollection().doc<Group>(groupId).valueChanges()
-  //     .pipe(map(group => group && group.ideas ? group.ideas : []));
-  // }
-
   getGroup(groupId: string): Observable<Group> {
     return this.getGroupCollection().doc<Group>(groupId).snapshotChanges().pipe(map(a => {
       const data = a.payload.data();
@@ -59,5 +54,25 @@ export class GroupService {
     return from(this.getGroupCollection().add(group)).pipe(
       map(res => res.id)
     );
+  }
+
+  addUser(groupId: string, ideaNames: string[], userName: string): void {
+    const doc = this.getGroupCollection().doc<Group>(groupId);
+    doc.valueChanges().pipe(first()).subscribe(group => {
+      const ideas = group && group.ideas ? group.ideas : [];
+
+      const changedIdeas = ideas.map(idea => {
+        const shouldContainUser = ideaNames
+          .map(ideaName => ideaName === idea.name)
+          .reduce((reduced, next) => reduced || next, false);
+
+        if (shouldContainUser) {
+          idea.users = idea.users ? idea.users : [];
+          idea.users.push(userName);
+        }
+        return idea;
+      });
+      doc.update({ ...group, ideas: changedIdeas });
+    });
   }
 }
