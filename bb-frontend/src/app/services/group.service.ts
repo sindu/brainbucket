@@ -8,27 +8,45 @@ import { map, first } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GroupService {
+  private groupCollectionIdentifier = 'groups';
   constructor(private db: AngularFirestore) { }
 
-  getIdeasOfGroup(groupId: string): Observable<Idea[]> {
-    return this.db.collection<Group>('groups').doc<Group>(groupId).valueChanges()
-      .pipe(map(group => group && group.ideas ? group.ideas : []));
+  private getGroupCollection() {
+    return this.db.collection<Group>(this.groupCollectionIdentifier);
   }
 
+  // getIdeasOfGroup(groupId: string): Observable<Idea[]> {
+  //   return this.getGroupCollection().doc<Group>(groupId).valueChanges()
+  //     .pipe(map(group => group && group.ideas ? group.ideas : []));
+  // }
+
   getGroup(groupId: string): Observable<Group> {
-    return this.db.collection<Group>('groups').doc<Group>(groupId).valueChanges();
+    return this.getGroupCollection().doc<Group>(groupId).snapshotChanges().pipe(map(a => {
+      const data = a.payload.data();
+      const id = a.payload.id;
+      return { id, ...data };
+
+    }));
   }
 
   addIdeaToGroup(idea: Idea, groupId: string) {
-    const doc = this.db.collection<Group>('groups').doc<Group>(groupId);
+    const doc = this.getGroupCollection().doc<Group>(groupId);
     doc.valueChanges().pipe(first()).subscribe(data => {
       const ideas = data && data.ideas ? data.ideas : [];
       doc.update({ ...data, ideas: [...ideas, idea] });
     });
   }
 
+  lockGroup(id: string) {
+    const doc = this.getGroupCollection().doc<Group>(id);
+    doc.valueChanges().pipe(first()).subscribe(data => {
+      const ideas = data && data.ideas ? data.ideas : [];
+      doc.update({ ...data, locked: true });
+    });
+  }
+
   getGroups(): Observable<Array<Group>> {
-    return this.db.collection<Group>('groups').snapshotChanges().pipe(map(actions => {
+    return this.getGroupCollection().snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data();
         const id = a.payload.doc.id;
@@ -38,7 +56,7 @@ export class GroupService {
   }
 
   createGroup(group: Group) {
-    return from(this.db.collection<Group>('groups').add(group)).pipe(
+    return from(this.getGroupCollection().add(group)).pipe(
       map(res => res.id)
     );
   }
