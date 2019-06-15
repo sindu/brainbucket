@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { LoginDialogComponent} from '../login-dialog/login-dialog.component';
-import { MatDialog} from '@angular/material';
-import {Observable, of} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { MatDialog } from '@angular/material';
+import { Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class UserService {
   inputUserDialog(): Observable<string> {
     const dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '350px',
-      data: {user: this.user}
+      data: { user: this.user }
     });
 
     return dialogRef.afterClosed().pipe(tap(result => {
