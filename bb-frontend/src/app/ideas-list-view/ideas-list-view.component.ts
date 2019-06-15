@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { Idea } from '../models/model';
+import { Idea, Group } from '../models/model';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../services/group.service';
 
@@ -12,7 +12,7 @@ import { GroupService } from '../services/group.service';
 })
 export class IdeasListViewComponent implements OnInit {
   ideas$: Observable<Idea[]>;
-  groupId$: Observable<number>;
+  group$: Observable<Group>;
   idea: Idea;
   constructor(
     private groupService: GroupService,
@@ -20,8 +20,8 @@ export class IdeasListViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ideas$ = this.activatedRoute.params.pipe(switchMap(params => this.groupService.getIdeasOfGroup(params.id)));
-    this.groupId$ = this.activatedRoute.params.pipe(map(params => params.id));
+    this.group$ = this.activatedRoute.params.pipe(switchMap(params => this.groupService.getGroup(params.id)));
+    this.ideas$ = this.group$.pipe(map(group => group && group.ideas ? group.ideas : []));
   }
 
   addIdeaToGroup(idea: Idea) {

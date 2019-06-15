@@ -15,6 +15,10 @@ export class GroupService {
       .pipe(map(group => group && group.ideas ? group.ideas : []));
   }
 
+  getGroup(groupId: string): Observable<Group> {
+    return this.db.collection<Group>('groups').doc<Group>(groupId).valueChanges();
+  }
+
   addIdeaToGroup(idea: Idea, groupId: string) {
     const doc = this.db.collection<Group>('groups').doc<Group>(groupId);
     doc.valueChanges().pipe(first()).subscribe(data => {

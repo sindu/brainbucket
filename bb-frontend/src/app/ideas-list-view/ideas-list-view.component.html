@@ -1,6 +1,8 @@
 <mat-drawer-container autosize>
+  <mat-drawer mode="side" opened="true">
+    <app-create-idea-container [group]="group$ | async"></app-create-idea-container>
+  </mat-drawer>
   <div class="main-content">
-    <h3>List of Ideas</h3>
     <mat-list>
       <a mat-list-item *ngFor="let idea of ideas$ | async; trackBy:trackById" href="{{idea.url}}">
         <h3 mat-line>{{idea.name}}</h3>
@@ -8,7 +10,4 @@
       </a>
     </mat-list>
   </div>
-  <mat-drawer mode="side" opened="true">
-    <app-create-idea-container [groupId]="groupId$ | async"></app-create-idea-container>
-  </mat-drawer>
 </mat-drawer-container>
