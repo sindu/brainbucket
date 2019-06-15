@@ -6,8 +6,8 @@
   <mat-icon color="accent">search</mat-icon>
 </mat-toolbar>
 -->
+<h2 matSubheader>Groups</h2>
 <mat-nav-list>
-  <h3 matSubheader>Groups</h3>
   <a mat-list-item *ngFor="let group of groups$ | async; trackBy: trackByGroupId" routerLink="/{{group.id}}"
     title="View {{group.name}} details" role="option">
     <h2 matLine> {{group.name}} </h2>
