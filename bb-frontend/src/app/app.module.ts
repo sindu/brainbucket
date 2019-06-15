@@ -16,6 +16,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { GroupDetailComponent } from './group-detail/group-detail.component';
     GroupsListComponent,
     IdeasListViewComponent,
     CreateIdeaContainerComponent,
-    GroupDetailComponent
+    GroupDetailComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,9 @@ import { GroupDetailComponent } from './group-detail/group-detail.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
-
+  ],
+  entryComponents: [
+    LoginDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
