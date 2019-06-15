@@ -27,6 +27,11 @@ export class CreateIdeaContainerComponent implements OnInit, OnChanges {
     this.idea = this.resetIdea();
   }
 
+  lockGroup() {
+    console.log(this.group.id);
+    this.groupService.lockGroup(this.group.id);
+  }
+
   private resetIdea(): Idea {
     return {} as Idea;
   }

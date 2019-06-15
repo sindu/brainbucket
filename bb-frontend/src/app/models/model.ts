@@ -6,6 +6,7 @@ export interface Group {
   dateUntil?: string;
   lecturers?: Array<string>;
   ideas: Array<Idea>;
+  locked: boolean;
 }
 
 export interface Idea {
