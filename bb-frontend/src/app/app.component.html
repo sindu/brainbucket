@@ -1,10 +1,9 @@
 <mat-toolbar color="primary">
-  <div fxLayout="row" fxLayoutAlign="space-between center" routerLink="/">
+  <div>
     <div>
-      Brain Bucket
+      Brain Bucket | <small> {{user$ | async}} </small>
     </div>
-    <div fxLayout fxLayoutAlign="flex-end">
-      {{user$ | async}}
+    <div>
     </div>
   </div>
 
@@ -18,5 +17,3 @@
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>
-
-
