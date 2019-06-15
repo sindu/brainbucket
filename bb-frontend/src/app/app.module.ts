@@ -16,6 +16,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 import { GroupDetailComponent } from './group-detail/group-detail.component';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { VoteViewComponent } from './vote-view/vote-view.component';
 
 @NgModule({
@@ -27,6 +28,8 @@ import { VoteViewComponent } from './vote-view/vote-view.component';
     CreateIdeaContainerComponent,
     GroupDetailComponent,
     VoteViewComponent
+    GroupDetailComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,9 @@ import { VoteViewComponent } from './vote-view/vote-view.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
-
+  ],
+  entryComponents: [
+    LoginDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

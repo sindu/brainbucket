@@ -17,4 +17,7 @@ export interface Idea {
   users: string[];
 }
 
+export interface LoginData {
+  user: string;
+}
 
