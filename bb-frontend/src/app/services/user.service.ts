@@ -9,14 +9,13 @@ import {tap} from 'rxjs/operators';
 })
 export class UserService {
 
-  const userProperty = 'bb-user';
+  userProperty = 'bb-user';
   user: string;
 
   constructor(public dialog: MatDialog) { }
 
   getUser(): Observable<string> {
-    let user = sessionStorage.getItem(this.userProperty);
-    return of(user);
+    return of(sessionStorage.getItem(this.userProperty));
   }
 
   checkUser(): Observable<string> {
@@ -32,7 +31,11 @@ export class UserService {
 
     return dialogRef.afterClosed().pipe(tap(result => {
       console.log('The dialog was closed: ', result);
-      sessionStorage.setItem(this.userProperty, result);
+      if (result) {
+        sessionStorage.setItem(this.userProperty, result);
+      } else {
+        sessionStorage.removeItem(this.userProperty);
+      }
     }));
   }
 

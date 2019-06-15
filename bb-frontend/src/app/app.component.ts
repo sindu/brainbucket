@@ -1,16 +1,22 @@
-import {Component} from '@angular/core';
-import {LoginDialogComponent} from './login-dialog/login-dialog.component';
-import {MatDialog} from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from './services/user.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'BrainBucket-Frontend';
+  user$: Observable<string>;
 
-  constructor() {}
+  constructor(private userService: UserService) {}
+
+
+  ngOnInit() {
+    this.user$ = this.userService.getUser();
+  }
 
 }
 

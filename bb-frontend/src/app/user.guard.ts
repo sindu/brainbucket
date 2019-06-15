@@ -13,7 +13,8 @@ export class UserGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
 
-    return this.userService.checkUser().pipe(map(username => true));
+    return this.userService.checkUser().pipe(
+      map(username => true));
 
   }
 
