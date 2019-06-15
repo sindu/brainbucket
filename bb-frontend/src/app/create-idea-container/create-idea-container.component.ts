@@ -24,6 +24,7 @@ export class CreateIdeaContainerComponent implements OnInit, OnChanges {
 
   createIdea(idea: Idea) {
     this.groupService.addIdeaToGroup(idea, this.groupId);
+    this.idea = this.resetIdea();
   }
   private resetIdea(): Idea {
     return {} as Idea;
