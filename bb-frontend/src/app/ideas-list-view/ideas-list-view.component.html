@@ -1,7 +1,8 @@
+<app-create-idea-container [groupId]="groupId$ | async"></app-create-idea-container>
 <mat-list>
   <a mat-list-item *ngFor="let idea of ideas$ | async; trackBy:trackById" href="{{idea.url}}">
-    <h3 mat-line>{{idea.name}}</h3>
+    <h2 mat-line>{{idea.name}}</h2>
     <h3 mat-line>{{idea.description}}</h3>
   </a>
 </mat-list>
-<app-create-idea-container [groupId]="groupId$ | async"></app-create-idea-container>
+
