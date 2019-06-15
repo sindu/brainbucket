@@ -15,6 +15,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
+import { GroupDetailComponent } from './group-detail/group-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { environment } from '../environments/environment';
     CreateGroupViewComponent,
     GroupsListComponent,
     IdeasListViewComponent,
-    CreateIdeaContainerComponent
+    CreateIdeaContainerComponent,
+    GroupDetailComponent
   ],
   imports: [
     BrowserModule,
