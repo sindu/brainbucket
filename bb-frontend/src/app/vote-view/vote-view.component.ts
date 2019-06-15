@@ -3,8 +3,10 @@ import { Observable } from 'rxjs';
 import { Idea } from '../models/model';
 import { GroupService } from '../services/group.service';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, first } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 import { MatSelectionListChange } from '@angular/material';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-vote-view',
@@ -16,7 +18,8 @@ export class VoteViewComponent implements OnInit {
   ideas$: Observable<Idea[]>;
   constructor(
     private groupService: GroupService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -28,7 +31,7 @@ export class VoteViewComponent implements OnInit {
   change(event: MatSelectionListChange) {
     const optionList = event.source.selectedOptions.selected;
     const ideaNames = optionList.map(option => option.value);
-
-    this.activatedRoute.params.subscribe(params => this.groupService.addUser(params.id, ideaNames, 'testuser'));
+    combineLatest(this.userService.getUser(), this.activatedRoute.params).pipe(first())
+      .subscribe((obs: [string, any]) => this.groupService.addUser(obs[1].id, ideaNames, obs[0]));
   }
 }
